@@ -4,8 +4,13 @@ case $(id -u) in
     0) 
         # Update system
         aptitude update
-        #aptitude dist-upgrade -y
-        aptitude install build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion zsh python-pip -y
+        aptitude dist-upgrade -y
+        # General
+        aptitude install -y build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion zsh python-pip
+        # MySQL
+        aptitude install -y libmysql-ruby libmysqlclient-dev
+        # PostgreSQL
+        aptitude install -y libpq-dev
         chsh vagrant -s /bin/zsh
         sudo -u vagrant -i $0  # script calling itself as the vagrant user
         ;;
