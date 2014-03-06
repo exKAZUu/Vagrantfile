@@ -22,10 +22,10 @@ case $(id -u) in
         # Install Ruby 2.0, Bundler and Rails
         rbenv install 2.0.0-p451
         rbenv global 2.0.0-p451
+        gem install rbenv-rehash
         rbenv rehash
         gem install bundler
         gem install rails
-        rbenv rehash
         # Install heroku-toolbelt
         wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
         # Install nodebrew
