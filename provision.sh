@@ -11,6 +11,8 @@ case $(id -u) in
         aptitude install -y libmysql-ruby libmysqlclient-dev
         # PostgreSQL
         aptitude install -y libpq-dev
+        # ImageMagick
+        aptitude install -y imagemagick
         chsh vagrant -s /bin/zsh
         sudo -u vagrant -i $0  # script calling itself as the vagrant user
         ;;
@@ -32,5 +34,9 @@ case $(id -u) in
         # Install nodebrew
         curl -L git.io/nodebrew | perl - setup
         echo 'export PATH=$HOME/.nodebrew/current/bin:$PATH' >> ~/.zshrc
+        source ~/.zshrc
+        # Install Node.js
+        nodebrew install stable
+        nodebrew use stable
         ;;
 esac
