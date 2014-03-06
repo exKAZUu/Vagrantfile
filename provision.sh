@@ -14,10 +14,12 @@ case $(id -u) in
         curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
         # Install RVM
         \curl -sSL https://get.rvm.io | bash -s stable --auto-dotfiles
+        source ~/.zshrc
         # Install Ruby 2.0, Bundler and Rails
         rvm install ruby-2.0.0-p451
         rvm install 1.9.3
         rvm alias create default ruby-2.0.0-p451
+        rvm use 2.0.0
         gem install bundler
         gem install rails
         # Install heroku-toolbelt
