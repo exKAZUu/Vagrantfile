@@ -12,18 +12,12 @@ case $(id -u) in
     *) 
         # Install oh-my-zsh
         curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
-        # Install rbenv
-        git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-        echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
-        echo 'eval "$(rbenv init -)"' >> ~/.zshrc
-        # Install rbenv
-        git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-        source ~/.zshrc
+        # Install RVM
+        \curl -sSL https://get.rvm.io | bash -s stable --auto-dotfiles
         # Install Ruby 2.0, Bundler and Rails
-        rbenv install 2.0.0-p451
-        rbenv global 2.0.0-p451
-        gem install rbenv-rehash
-        rbenv rehash
+        rvm install ruby-2.0.0-p451
+        rvm install 1.9.3
+        rvm alias create default ruby-2.0.0-p451
         gem install bundler
         gem install rails
         # Install heroku-toolbelt
