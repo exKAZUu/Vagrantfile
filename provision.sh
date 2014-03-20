@@ -38,5 +38,7 @@ case $(id -u) in
         # Install Node.js
         nodebrew install stable
         nodebrew use stable
+        # Install Meteor
+        curl https://install.meteor.com/ | sh
         ;;
 esac
