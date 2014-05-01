@@ -7,12 +7,16 @@ case $(id -u) in
         aptitude dist-upgrade -y
         # General
         aptitude install -y build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion zsh python-pip
+        # Others
+        aptitude install -y imagemagick libarchive-dev dos2unix
         # MySQL
         aptitude install -y libmysql-ruby libmysqlclient-dev
         # PostgreSQL
         aptitude install -y libpq-dev
-        # ImageMagick
-        aptitude install -y imagemagick
+        # Docker
+        aptitude install -y docker.io
+        ln -sf /usr/bin/docker.io /usr/local/bin/docker
+        sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
         chsh vagrant -s /bin/zsh
         sudo -u vagrant -i $0  # script calling itself as the vagrant user
         ;;
@@ -24,7 +28,6 @@ case $(id -u) in
         source ~/.zshrc
         # Install Ruby 2.0, Bundler and Rails
         rvm install ruby-2.0.0-p451
-        rvm install 1.9.3
         rvm alias create default ruby-2.0.0-p451
         rvm use 2.0.0
         gem install bundler
@@ -38,6 +41,7 @@ case $(id -u) in
         # Install Node.js
         nodebrew install stable
         nodebrew use stable
+        npm install -g bower grunt-cli
         # Install Meteor
         curl https://install.meteor.com/ | sh
         ;;
